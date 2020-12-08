@@ -1,17 +1,24 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {StatusBar, Image} from 'react-native';
 import styled from 'styled-components/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 export const Main = () => {
   return (
     <Container>
+      <StatusBar barStyle="light-content" />
       <SceneHeader>
         <NavigationBar>
-          <MenuToggle />
+          <MenuToggle>
+            <Ionicons name="md-menu-sharp" size={40} color="white" />
+          </MenuToggle>
           <StarbucksLogo
-            source={{uri: 'https://www.gigworks.co/img/buy/sb.png'}}
+            source={require('../src/images/starbucksLogoWhite.png')}
           />
-          <AlertsToggle />
+          <AlertsToggle>
+            <SimpleLineIcons name="bell" size={30} color="white" />
+          </AlertsToggle>
         </NavigationBar>
         <Greeting>
           <GreetingText>안녕하세요. 스타벅스입니다.</GreetingText>
@@ -28,19 +35,34 @@ const Container = styled.SafeAreaView`
 `;
 
 const SceneHeader = styled.View`
-  border: purple;
   height: 60;
 `;
 
-const NavigationBar = styled.View``;
+const NavigationBar = styled.View`
+  justify-content: space-between;
+  flex-direction: row;
+`;
 
-const MenuToggle = styled.TouchableOpacity``;
+const MenuToggle = styled.TouchableOpacity`
+  margin-left: 15;
+`;
 
-const StarbucksLogo = styled.Image``;
+const StarbucksLogo = styled.Image`
+  width: 200;
+  height: 50;
+`;
 
-const AlertsToggle = styled.TouchableOpacity``;
+const AlertsToggle = styled.TouchableOpacity`
+  margin-top: 5;
+  margin-right: 15;
+`;
 
-const Greeting = styled.View``;
+const Greeting = styled.View`
+  height: 40;
+  background-color: #282828;
+  justify-content: center;
+  align-items: center;
+`;
 
 const GreetingText = styled.Text`
   color: white;
